@@ -15,6 +15,7 @@ class RA extends PluginBase implements Listener {
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		$this->apply = new Config($this->getDataFolder() . "apply.txt", Config::ENUM, array());
 		$pp = $this->getServer()->getPluginManager()->getPlugin("PurePerms");
+		$this->saveResource("config.yml");
 		$this->getLogger()->warning("
 		* Starting RankApplier
 		* Version 1.0.0
@@ -38,26 +39,35 @@ class RA extends PluginBase implements Listener {
 								if($pp->getGroup($sender) === $min) {
 									$sender->sendMessage("[RA] You have applied for Admin! You have to wait till your ServerOwner contacts you!");
 									$this->apply->set(strtolower($n), "admin");
+									$this->apply->save();
 								}
 							}
 							return true;
 						break;
 						
 						case "staff":
+						
+							$n = $sender->getName();
+							$minn = $this->getConfig()->get("MinStaff");
+							
+							if($sender instanceof Player) {
+								if($pp->getGroup($sender) === $minn) {
+									$sender->sendMessage("[RA] You have applied for Staff! You have to wait till your ServerOwner contacts you!");
+									$this->apply->set(strtolower($n), "staff");
+									$this->apply-save();
+								}
+							}
 							return true;
 						break;
 					}
 				}
-			
-			
-			
 				return true;
 			break;
-			
 		}
 	}
 	
-	
-	
-	
+	public function onDisable() {
+		
+	}
+
 }
