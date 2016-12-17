@@ -1,0 +1,9 @@
+name: RankApply
+version: 1.0.0
+main: RTG\RankApply\RA
+api: 2.1.0
+author: IG
+commands:
+  apply:
+    usage: "/apply"
+    description: "Apply for a Staff rank!"
