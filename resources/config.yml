@@ -1,0 +1,7 @@
+# change ranks for MinAdmin and MinStaff according to your wish. Please don't add "".
+# Version 1.0.0
+# ----------------------------------------------------------
+# MinStaff for rank that the sender shd have before applying.
+MinStaff: Admin
+# MinAdmin for rank that the sender shd have before applying.
+MinAdmin: Builder
